@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hora do Dia</title>
+  <link rel="stylesheet" href="stylex.css">
+</head>
+<body onload = "load()">
+  <header>
+    <h1>Hora do Dia</h1>
+  </header>
+  <section>
+    <div id="msg">
+      Testando..
+    </div>
+    <div id="foto">
+      <img id="imagem" src="" alt="Foto do dia">
+
+    </div>
+  </section>
+  <footer>
+    <p>&copy; Mateus Santiago</p>
+  </footer>
+  <script>
+    function load() {
+    var msg = document.getElementById('msg')
+    var img = document.getElementById('imagem')
+    var data = new Date()
+    var hora = data.getHours()
+    var min = data.getMinutes()
+    var seg = data.getSeconds()
+    var tictac = setInterval(load, 1000) 
+    
+    msg.innerHTML = `Agora são ${hora}:${min}:${seg}`
+    if (hora >= 5 && hora < 12) {
+      img.src = 'jsmorning.png'
+      document.body.style.background = '#e2cd9f'
+
+    } else if (hora >= 12 && hora < 18) {
+      img.src = 'jsafternoon.png'
+      document.body.style.background = '#b9846f'
+
+    } else {
+      img.src = 'jsnight.png'
+    }
+  }
+
+  </script>
+</body>
+</html>

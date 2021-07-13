@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Contador</title>
+    <link rel="stylesheet" href="contadorstyle.css">
+</head>
+
+<body>
+    <header>
+        <h1>Super Contador</h1>
+    </header>
+    <section>
+        <div id="dados">
+            <p>Início: <input type="number" name="inicio" id="txti"></p>
+            <p>Fim: <input type="number" name="fim" id="txtf"></p>
+            <p>Passo: <input type="number" name="passo" id="txtp"></p>
+            <p><input type="button" value="Contar" onclick="contar()"></p>
+        </div>
+        <div id="res">
+            Preparando a Contagem..
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Mateus Santiago</p>
+    </footer>
+    <script>
+        function contar() {
+        var ini = document.getElementById('txti')
+        var fim = document.getElementById('txtf')
+        var passo = document.getElementById('txtp')
+        let res = document.getElementById('res')
+        if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+            res.innerHTML = 'Impossível contar!'
+            //alert('[ERRO] Faltam dados!')
+        } else {
+            res.innerHTML = 'Contando: <br>'
+            let i = Number(ini.value)
+            let f = Number(fim.value)
+            let p = Number(passo.value)
+            if (p <= 0) {
+                alert('Passo inválido! Considerando PASSO 1')
+                p = 1 
+            }
+            if (i < f) {
+                //contagem crescente
+                for (let c = 1; c <= f; c += p) {
+                    res.innerHTML += `${c} \u{1f449} `
+                }
+            } else {
+
+            for(let c = i; c >= f; c -= p) {
+                res.innerHTML += `${c} \u{1f449} `
+                }
+            } res.innerHTML += `\u{1F3C1}`
+        }   
+    }    
+    </script>
+</body>
+
+</html>
